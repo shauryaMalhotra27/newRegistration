@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".loginPage"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="#FFEB3B">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGIN"
+        android:textSize="50sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/emailLogInET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginTop="40dp"
+        android:paddingHorizontal="20dp"
+        android:hint="EMAIL"
+        android:layout_marginHorizontal="20dp"/>
+
+    <EditText
+        android:id="@+id/passLogInET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginTop="40dp"
+        android:paddingHorizontal="20dp"
+        android:hint="PASSWORD"
+        android:layout_marginHorizontal="20dp"/>
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGIN"
+        android:textSize="20sp"
+        android:backgroundTint="@color/black"
+        android:layout_marginTop="100dp"/>
+
+    <Button
+        android:id="@+id/goToRegiBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GO TO REGISTER PAGE"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@android:color/transparent"/>
+
+
+
+</LinearLayout>

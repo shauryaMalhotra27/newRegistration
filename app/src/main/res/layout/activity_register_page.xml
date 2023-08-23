@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".registerPage"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#00BCD4">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REGISTER"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/nameRegiET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginTop="40dp"
+        android:paddingHorizontal="20dp"
+        android:hint="NAME"
+        android:layout_marginHorizontal="20dp"/>
+
+    <EditText
+        android:id="@+id/ageRegiET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginTop="40dp"
+        android:paddingHorizontal="20dp"
+        android:hint="AGE"
+        android:layout_marginHorizontal="20dp"/>
+
+    <EditText
+        android:id="@+id/genderRegiET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginTop="40dp"
+        android:paddingHorizontal="20dp"
+        android:hint="GENDER"
+        android:layout_marginHorizontal="20dp"/>
+
+    <EditText
+        android:id="@+id/emailRegiET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginTop="40dp"
+        android:paddingHorizontal="20dp"
+        android:hint="EMAIL"
+        android:layout_marginHorizontal="20dp"/>
+
+    <Button
+        android:id="@+id/goToPassBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GO TO PASSWORD PAGE"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@android:color/transparent"/>
+
+
+</LinearLayout>
