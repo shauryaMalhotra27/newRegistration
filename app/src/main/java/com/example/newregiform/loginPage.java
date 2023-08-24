@@ -6,9 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,7 +25,9 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class loginPage extends AppCompatActivity {
 
-    Button goToRegiBtn , loginBtn;
+    TextView goToRegiBtn, loginBtn;
+
+    TextView textMsg;
 
     EditText emailLogInET, passLogInET;
 
@@ -31,7 +38,7 @@ public class loginPage extends AppCompatActivity {
         super.onStart();
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
+        if (currentUser != null) {
 
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(i);
@@ -39,23 +46,28 @@ public class loginPage extends AppCompatActivity {
         }
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
 
+        Window g = getWindow();
+        g.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.TYPE_STATUS_BAR);
+
+
         emailLogInET = findViewById(R.id.emailLogInET);
-        passLogInET  = findViewById(R.id.passLogInET);
+        passLogInET = findViewById(R.id.passLogInET);
         loginBtn = findViewById(R.id.loginBtn);
+
         mAuth = FirebaseAuth.getInstance();
-
-
-        //here we called the btn by its id and set a on click listener to go to register page
         goToRegiBtn = findViewById(R.id.goToRegiBtn);
+
+
         goToRegiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),registerPage.class);
+                Intent i = new Intent(getApplicationContext(), registerPage.class);
                 startActivity(i);
                 finish();
             }
@@ -69,46 +81,78 @@ public class loginPage extends AppCompatActivity {
                 email = emailLogInET.getText().toString().trim();
                 password = passLogInET.getText().toString().trim();
 
-                if (TextUtils.isEmpty(email)){
-                    Toast.makeText(loginPage.this, "EMAIL IS EMPTY !", Toast.LENGTH_SHORT).show();
-                    return;
+                if (TextUtils.isEmpty(email)) {
+                     warnToast();
+                     return;
                 }
-                if (TextUtils.isEmpty(password)){
-                    Toast.makeText(loginPage.this, "PASSWORD IS EMPTY !", Toast.LENGTH_SHORT).show();
-                    return;
+                if (TextUtils.isEmpty(password)) {
+                     warnToast();
+                     return;
                 }
 
                 mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Toast.makeText(loginPage.this, "LOGIN SUCCESSFUL !",
-                                            Toast.LENGTH_SHORT).show();
+
+                                    successToast();
 
                                     Intent i = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(i);
                                     finish();
 
                                 } else {
-                                    // If sign in fails, display a message to the user.
 
-                                    Toast.makeText(loginPage.this, "LOGIN FAILED !",
-                                            Toast.LENGTH_SHORT).show();
-
+                                    failToast();
                                 }
                             }
                         });
-
 
 
             }
         });
 
 
+    }
+
+    public void successToast() {
+
+        Toast toastSuccess = new Toast(getApplicationContext());
+        View successView = getLayoutInflater().inflate(R.layout.custom_toast_message_green, (ViewGroup) findViewById(R.id.successLayout));
+        toastSuccess.setView(successView);
+        textMsg = successView.findViewById(R.id.textGreen);
+        textMsg.setText("LOGIN SUCCESSFUL !");
+        toastSuccess.setDuration(Toast.LENGTH_SHORT);
+        toastSuccess.setGravity(Gravity.TOP, 0,30);
+        toastSuccess.show();
 
 
+    }
+
+    public void failToast() {
+
+        Toast toastFail = new Toast(getApplicationContext());
+        View failView = getLayoutInflater().inflate(R.layout.custom_toast_message_red, (ViewGroup) findViewById(R.id.wrongLayout));
+        toastFail.setView(failView);
+        textMsg = failView.findViewById(R.id.textRed);
+        textMsg.setText("LOGIN FAILED !");
+        toastFail.setDuration(Toast.LENGTH_SHORT);
+        toastFail.setGravity(Gravity.TOP, 0,30);
+        toastFail.show();
+
+
+    }
+
+    public void warnToast(){
+        Toast toastWarn = new Toast(getApplicationContext());
+        View warnView = getLayoutInflater().inflate(R.layout.custom_toast_yellow, (ViewGroup) findViewById(R.id.warningLayout));
+         toastWarn.setView( warnView);
+        textMsg = warnView.findViewById(R.id.textYellow);
+        textMsg.setText("EMAIL OR PASSWORD MISSING");
+        toastWarn.setDuration(Toast.LENGTH_SHORT);
+        toastWarn.setGravity(Gravity.TOP, 0,30);
+        toastWarn.show();
 
     }
 }

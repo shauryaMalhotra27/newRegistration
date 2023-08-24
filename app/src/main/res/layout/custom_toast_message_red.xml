@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/toast_background"
+    android:gravity="center"
+    android:padding="15dp"
+    android:id="@+id/wrongLayout">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/wrong"/>
+
+    <TextView
+        android:id="@+id/textRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#F44336"
+        android:text="Declined !"
+        android:textSize="15sp"
+
+        android:layout_marginStart="8dp"/>
+
+</LinearLayout>

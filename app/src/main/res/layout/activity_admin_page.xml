@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".adminPage"
+    android:background="@drawable/login_signup_background"
+    >
+
+    <TextView
+        android:id="@+id/navBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/header_shape"
+
+        android:padding="10dp"
+
+
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/adminIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/navBar"
+        app:layout_constraintLeft_toLeftOf="@id/navBar"
+        app:layout_constraintBottom_toBottomOf="@id/navBar"
+        android:background="@drawable/admin_icon"
+        android:layout_marginStart="15dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADMIN"
+        android:textSize="30sp"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="@id/navBar"
+        app:layout_constraintLeft_toRightOf="@id/adminIcon"
+         app:layout_constraintBottom_toBottomOf="@id/navBar"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".welcomePage"
+    android:background="@drawable/login_signup_background"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/design_shape"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/differentShapes"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_bias="0.25"
+        android:background="@drawable/circles_shape"
+        />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:layout_constraintTop_toTopOf="@id/differentShapes"
+        app:layout_constraintBottom_toBottomOf="@id/differentShapes"
+        app:layout_constraintLeft_toLeftOf="@id/differentShapes"
+        app:layout_constraintRight_toRightOf="@id/differentShapes"
+        android:background="@drawable/stop_watch_shape"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/differentShapes"
+        app:layout_constraintLeft_toLeftOf="@id/differentShapes"
+        app:layout_constraintRight_toRightOf="@id/differentShapes"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/goToLoginPage"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:text="Login"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OR"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:layout_marginTop="15dp"/>
+
+
+        <Button
+            android:id="@+id/goToRegisterPage"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Register Now"
+            android:textSize="25sp"
+            android:backgroundTint="@android:color/transparent"
+            android:textColor="@color/black"
+            android:layout_marginTop="15dp"
+             />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

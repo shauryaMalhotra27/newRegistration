@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,7 +25,7 @@ public class passwordPage extends AppCompatActivity {
     TextView namePassTV, agePassTV, genderPassTV, emailPassTV;
 
     EditText pass1ET, pass2ET;
-    Button changeBtn, registerBtn;
+    TextView  registerBtn, passBackBtn;
     FirebaseAuth mAuth;
 
     @Override
@@ -44,6 +46,10 @@ public class passwordPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_page);
 
+        Window g = getWindow();
+        g.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.TYPE_STATUS_BAR);
+
+
         mAuth = FirebaseAuth.getInstance();
         namePassTV = findViewById(R.id.namePassTV);
         agePassTV = findViewById(R.id.agePassTV);
@@ -51,6 +57,7 @@ public class passwordPage extends AppCompatActivity {
         emailPassTV = findViewById(R.id.emailPassTV);
         pass1ET = findViewById(R.id.pass1ET);
         pass2ET = findViewById(R.id.pass2ET);
+        passBackBtn = findViewById(R.id.passBackBtn);
 
 
         Intent j = getIntent();
@@ -67,8 +74,8 @@ public class passwordPage extends AppCompatActivity {
         String emailShow = j.getStringExtra("EMAIL");
         emailPassTV.setText(emailShow);
 
-        changeBtn = findViewById(R.id.changeBtn);
-        changeBtn.setOnClickListener(new View.OnClickListener() {
+
+        passBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), registerPage.class);
