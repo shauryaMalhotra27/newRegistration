@@ -3,7 +3,10 @@ package com.example.newregiform;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -25,7 +28,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class loginPage extends AppCompatActivity {
 
-    TextView goToRegiBtn, loginBtn;
+    TextView goToRegiBtn, loginBtn, adminBtn;
 
     TextView textMsg;
 
@@ -59,10 +62,66 @@ public class loginPage extends AppCompatActivity {
         emailLogInET = findViewById(R.id.emailLogInET);
         passLogInET = findViewById(R.id.passLogInET);
         loginBtn = findViewById(R.id.loginBtn);
+        adminBtn = findViewById(R.id.adminBtn);
 
         mAuth = FirebaseAuth.getInstance();
         goToRegiBtn = findViewById(R.id.goToRegiBtn);
 
+
+        adminBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                final Dialog dialog = new Dialog(loginPage.this);
+                dialog.setContentView(R.layout.activity_admin_dialouge_box);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.setCancelable(false);
+
+                TextView adminLogin = dialog.findViewById(R.id.adminLoginBtn);
+                TextView adminCancel = dialog.findViewById(R.id.adminCancelBtn);
+                EditText adminPassText = dialog.findViewById(R.id.adminPassText);
+
+                adminCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                adminLogin.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        String passText = adminPassText.getText().toString();
+
+                        String adminPass = "1234";
+
+                        if (TextUtils.isEmpty(passText)) {
+                            warnToast();
+                            textMsg.setText("admin pass empty !");
+                            return;
+                        }
+
+                        if (passText.equals(adminPass)) {
+                            successToast();
+                            textMsg.setText("WELCOME ADMIN !");
+                            Intent i = new Intent(getApplicationContext(), adminPage.class);
+                            startActivity(i);
+                            finish();
+                        } else {
+
+                            adminPassText.setText("");
+                            failToast();
+                            textMsg.setText("ADMIN LOGIN FAILED !");
+                        }
+
+                    }
+                });
+
+
+                dialog.show();
+            }
+        });
 
         goToRegiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,12 +141,12 @@ public class loginPage extends AppCompatActivity {
                 password = passLogInET.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
-                     warnToast();
-                     return;
+                    warnToast();
+                    return;
                 }
                 if (TextUtils.isEmpty(password)) {
-                     warnToast();
-                     return;
+                    warnToast();
+                    return;
                 }
 
                 mAuth.signInWithEmailAndPassword(email, password)
@@ -124,7 +183,7 @@ public class loginPage extends AppCompatActivity {
         textMsg = successView.findViewById(R.id.textGreen);
         textMsg.setText("LOGIN SUCCESSFUL !");
         toastSuccess.setDuration(Toast.LENGTH_SHORT);
-        toastSuccess.setGravity(Gravity.TOP, 0,30);
+        toastSuccess.setGravity(Gravity.TOP, 0, 30);
         toastSuccess.show();
 
 
@@ -138,20 +197,20 @@ public class loginPage extends AppCompatActivity {
         textMsg = failView.findViewById(R.id.textRed);
         textMsg.setText("LOGIN FAILED !");
         toastFail.setDuration(Toast.LENGTH_SHORT);
-        toastFail.setGravity(Gravity.TOP, 0,30);
+        toastFail.setGravity(Gravity.TOP, 0, 30);
         toastFail.show();
 
 
     }
 
-    public void warnToast(){
+    public void warnToast() {
         Toast toastWarn = new Toast(getApplicationContext());
         View warnView = getLayoutInflater().inflate(R.layout.custom_toast_yellow, (ViewGroup) findViewById(R.id.warningLayout));
-         toastWarn.setView( warnView);
+        toastWarn.setView(warnView);
         textMsg = warnView.findViewById(R.id.textYellow);
         textMsg.setText("EMAIL OR PASSWORD MISSING");
         toastWarn.setDuration(Toast.LENGTH_SHORT);
-        toastWarn.setGravity(Gravity.TOP, 0,30);
+        toastWarn.setGravity(Gravity.TOP, 0, 30);
         toastWarn.show();
 
     }
