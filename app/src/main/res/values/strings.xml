@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">newRegiForm</string>
     <string name="back"> back </string>
+    <string-array name="gender">
+        <item>male</item>
+        <item>female</item>
+        <item>none</item>
+    </string-array>
 </resources>
