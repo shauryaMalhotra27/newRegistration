@@ -16,8 +16,8 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity {
 
 
-    TextView showDetailsMainTV;
-    Button logoutMainBtn;
+    TextView showDetailsMainTV, settingIcon;
+
 
     FirebaseAuth auth;
     FirebaseUser user;
@@ -33,33 +33,30 @@ public class MainActivity extends AppCompatActivity {
 
 
         showDetailsMainTV = findViewById(R.id.showDetailsMainTV);
-        logoutMainBtn = findViewById(R.id.logoutMainBtn);
+
+        settingIcon = findViewById(R.id.settingIcon);
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
-        if(user == null){
+        if (user == null) {
             Intent i = new Intent(getApplicationContext(), loginPage.class);
             startActivity(i);
             finish();
-        }
-
-        else {
+        } else {
             showDetailsMainTV.setText(user.getEmail());
         }
 
-        logoutMainBtn.setOnClickListener(new View.OnClickListener() {
+
+        settingIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                FirebaseAuth.getInstance().signOut();
-                Intent i = new Intent(getApplicationContext(), loginPage.class);
+                Intent i = new Intent(getApplicationContext(), SettingPage.class);
                 startActivity(i);
-                finish();
+
             }
         });
-
-
 
 
     }

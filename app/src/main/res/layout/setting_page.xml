@@ -4,21 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".SettingPage"
     android:background="@drawable/login_signup_background"
-
-
-    tools:context=".MainActivity">
-
+    >
 
     <TextView
         android:id="@+id/navBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/header_shape"
-
         android:padding="10dp"
-
-
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -28,63 +23,67 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="HOME"
+        android:text="SETTINGS"
         android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@id/navBar"
         app:layout_constraintLeft_toRightOf="@id/homeIcon"
         app:layout_constraintTop_toTopOf="@id/navBar"
         />
-
     <TextView
         android:id="@+id/homeIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/home_icon"
+        android:background="@drawable/setting_icon"
         android:layout_marginStart="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/navBar"
         app:layout_constraintLeft_toLeftOf="@id/navBar"
-
         app:layout_constraintTop_toTopOf="@id/navBar" />
 
-
     <TextView
-        android:id="@+id/settingIcon"
+        android:id="@+id/editProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/navBar"
-        app:layout_constraintBottom_toBottomOf="@id/navBar"
-        app:layout_constraintRight_toRightOf="@id/navBar"
-        android:background="@drawable/setting_icon"
-
-        android:layout_marginEnd="15dp"
-        />
-
-    <TextView
-        android:id="@+id/welcomeText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="WELCOME"
         app:layout_constraintTop_toBottomOf="@id/navBar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="30dp"
-        android:textSize="40dp"
+        android:layout_marginTop="90dp"
+         android:paddingHorizontal="15dp"
+        android:textColor="@color/white"
+        android:background="@drawable/dialouge_bg_orange"
+        android:textSize="40sp"
+        android:text="EDIT PROFILE"
         android:gravity="center"
         />
 
     <TextView
-        android:id="@+id/showDetailsMainTV"
-        android:layout_width="match_parent"
+        android:id="@+id/uploadAvatar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="EMAIL SHOWN HERE"
-        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@id/editProfile"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/dialouge_bg_orange"
+        android:paddingHorizontal="15dp"
+        android:textColor="@color/white"
         android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
+        android:textSize="40sp"
+        android:text="UPLOAD AVATAR"
+        android:gravity="center"
+        />
 
+    <Button
+        android:id="@+id/logoutSettingBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGOUT"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@id/uploadAvatar"
+        app:layout_constraintLeft_toLeftOf="@id/uploadAvatar"
+        app:layout_constraintRight_toRightOf="@id/uploadAvatar"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/black"
 
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
