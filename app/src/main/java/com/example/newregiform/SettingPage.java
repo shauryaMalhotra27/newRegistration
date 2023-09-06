@@ -1,36 +1,69 @@
 package com.example.newregiform;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SettingPage extends AppCompatActivity {
 
-    private TextView editProfile, textMsg;
-    private Button logoutSettingBtn;
-
     FirebaseAuth auth;
     FirebaseUser user;
+
+    private String TAG = "SettingPage";
+    private TextView editProfile, textMsg, logoutSettingBtn, deleteSettingBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_page);
 
+        Window g = getWindow();
+        g.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.TYPE_STATUS_BAR);
+
+
         editProfile = findViewById(R.id.editProfile);
         logoutSettingBtn = findViewById(R.id.logoutSettingBtn);
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
+
+        deleteSettingBtn = findViewById(R.id.deleteSettingBtn);
+
+        deleteSettingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                user.delete()
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Log.d(TAG, "User account deleted.");
+                                }
+                            }
+                        });
+
+            }
+        });
+
+
+
 
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override

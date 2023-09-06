@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingPage"
     android:background="@drawable/login_signup_background"
-    >
+    tools:context=".SettingPage">
+
 
     <TextView
         android:id="@+id/navBar"
@@ -19,6 +19,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,63 +28,71 @@
         android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@id/navBar"
-        app:layout_constraintLeft_toRightOf="@id/homeIcon"
-        app:layout_constraintTop_toTopOf="@id/navBar"
-        />
-    <TextView
-        android:id="@+id/homeIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/setting_icon"
-        android:layout_marginStart="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/navBar"
-        app:layout_constraintLeft_toLeftOf="@id/navBar"
+        app:layout_constraintLeft_toRightOf="@id/backButton"
         app:layout_constraintTop_toTopOf="@id/navBar" />
-
+    
     <TextView
-        android:id="@+id/editProfile"
+        android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/navBar"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/navBar"
+        app:layout_constraintLeft_toLeftOf="@id/navBar"
+        app:layout_constraintBottom_toBottomOf="@id/navBar"
+        android:layout_marginLeft="10dp"
+
+        android:background="@drawable/back_arrow"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="vertical"
+        android:paddingVertical="30dp"
+
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="90dp"
-         android:paddingHorizontal="15dp"
-        android:textColor="@color/white"
-        android:background="@drawable/dialouge_bg_orange"
-        android:textSize="40sp"
-        android:text="EDIT PROFILE"
-        android:gravity="center"
-        />
+        app:layout_constraintTop_toBottomOf="@id/navBar">
 
-    <TextView
-        android:id="@+id/uploadAvatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/editProfile"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:background="@drawable/dialouge_bg_orange"
-        android:paddingHorizontal="15dp"
-        android:textColor="@color/white"
-        android:layout_marginTop="30dp"
-        android:textSize="40sp"
-        android:text="UPLOAD AVATAR"
-        android:gravity="center"
-        />
+        <TextView
+            android:id="@+id/editProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:padding="15dp"
+            android:text="Edit Profile"
+            android:textColor="@color/black"
+            android:textSize="30sp"
 
-    <Button
-        android:id="@+id/logoutSettingBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LOGOUT"
-        android:textSize="30sp"
-        app:layout_constraintTop_toBottomOf="@id/uploadAvatar"
-        app:layout_constraintLeft_toLeftOf="@id/uploadAvatar"
-        app:layout_constraintRight_toRightOf="@id/uploadAvatar"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="@color/black"
+            />
 
-        />
+
+
+        <TextView
+            android:id="@+id/logoutSettingBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+             android:gravity="start"
+            android:padding="15dp"
+            android:text="Logout"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+
+            />
+        <TextView
+            android:id="@+id/deleteSettingBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:padding="15dp"
+            android:text="Delete Account"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+
+            />
+
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

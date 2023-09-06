@@ -104,10 +104,11 @@ public class loginPage extends AppCompatActivity {
 
                         if (passText.equals(adminPass)) {
                             successToast();
+                            adminPassText.setText("");
                             textMsg.setText("WELCOME ADMIN !");
                             Intent i = new Intent(getApplicationContext(), adminPage.class);
                             startActivity(i);
-                            finish();
+
                         } else {
 
                             adminPassText.setText("");
@@ -117,8 +118,6 @@ public class loginPage extends AppCompatActivity {
 
                     }
                 });
-
-
                 dialog.show();
             }
         });
@@ -150,21 +149,23 @@ public class loginPage extends AppCompatActivity {
                 }
 
                 mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
 
-                                    successToast();
+                                successToast();
 
-                                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(i);
-                                    finish();
+                                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                //i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(i);
+                                finish();
 
-                                } else {
 
-                                    failToast();
-                                }
+
+
+
+                            } else {
+
+                                failToast();
                             }
                         });
 
