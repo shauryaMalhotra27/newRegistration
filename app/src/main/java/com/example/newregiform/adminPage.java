@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,6 +26,14 @@ public class adminPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_page);
+
+        Toolbar toolbar3 =(Toolbar) findViewById(R.id.toolBar3);
+        toolbar3.setTitle("admin");
+        setSupportActionBar(toolbar3);
+        toolbar3.setLogo(R.drawable.admin_icon);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_keyboard);
+
 
         recyclerView = findViewById(R.id.recyclerViewOfAdmin);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

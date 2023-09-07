@@ -84,7 +84,10 @@ public class AdminRecyclerAdapter extends RecyclerView.Adapter<AdminRecyclerAdap
         return dataEmail.size();
     }
 
+
+
     public void removeFirestoreData(String userEmailToDelete) {
+
         Log.d(TAG, "removeFirestoreData: ");
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();

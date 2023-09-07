@@ -4,43 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_signup_background"
-    tools:context=".SettingPage">
+     tools:context=".SettingPage"
+    android:background="#FFE0B3">
 
 
-    <TextView
-        android:id="@+id/navBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/header_shape"
-        android:padding="10dp"
-        android:textSize="30sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+     <include
+         android:id="@+id/toolBar2"
+         layout="@layout/customized_toolbar"
+         />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="SETTINGS"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@id/navBar"
-        app:layout_constraintLeft_toRightOf="@id/backButton"
-        app:layout_constraintTop_toTopOf="@id/navBar" />
-    
-    <TextView
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/navBar"
-        app:layout_constraintLeft_toLeftOf="@id/navBar"
-        app:layout_constraintBottom_toBottomOf="@id/navBar"
-        android:layout_marginLeft="10dp"
 
-        android:background="@drawable/back_arrow"/>
 
 
     <LinearLayout
@@ -48,10 +22,10 @@
         android:layout_height="wrap_content"
         android:gravity="end"
         android:orientation="vertical"
-        android:paddingVertical="30dp"
+
 
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/navBar">
+        app:layout_constraintTop_toBottomOf="@id/toolBar2">
 
         <TextView
             android:id="@+id/editProfile"
@@ -61,24 +35,34 @@
             android:padding="15dp"
             android:text="Edit Profile"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="20sp"
 
             />
 
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:dividerColor="#BCBCBC"/>
 
 
         <TextView
             android:id="@+id/logoutSettingBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-             android:gravity="start"
+            android:gravity="start"
             android:padding="15dp"
             android:text="Logout"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="20sp"
 
             />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            app:dividerColor="#BCBCBC"/>
+
         <TextView
             android:id="@+id/deleteSettingBtn"
             android:layout_width="match_parent"
@@ -86,10 +70,15 @@
             android:gravity="start"
             android:padding="15dp"
             android:text="Delete Account"
-            android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textColor="#FF0000"
+            android:textSize="20sp"
 
             />
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            app:dividerColor="#BCBCBC"/>
 
 
     </LinearLayout>

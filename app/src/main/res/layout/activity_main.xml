@@ -4,87 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_signup_background"
-
+    android:background="#FFE0B3"
 
     tools:context=".MainActivity">
 
+    <include
+        android:id="@+id/toolBar1"
+        layout="@layout/customized_toolbar" />
 
-    <TextView
-        android:id="@+id/navBar"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/header_shape"
-
-        android:padding="10dp"
-
-
-        android:textSize="30sp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/toolBar1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="HOME"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@id/navBar"
-        app:layout_constraintLeft_toRightOf="@id/homeIcon"
-        app:layout_constraintTop_toTopOf="@id/navBar"
-        />
+        <TextView
+            android:id="@+id/welcomeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="welcome ,"
+            android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/homeIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/home_icon"
-        android:layout_marginStart="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/navBar"
-        app:layout_constraintLeft_toLeftOf="@id/navBar"
-
-        app:layout_constraintTop_toTopOf="@id/navBar" />
-
-
-    <TextView
-        android:id="@+id/settingIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/navBar"
-        app:layout_constraintBottom_toBottomOf="@id/navBar"
-        app:layout_constraintRight_toRightOf="@id/navBar"
-        android:background="@drawable/setting_icon"
-
-        android:layout_marginEnd="15dp"
-        />
-
-    <TextView
-        android:id="@+id/welcomeText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="WELCOME"
-        app:layout_constraintTop_toBottomOf="@id/navBar"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="30dp"
-        android:textSize="40dp"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:id="@+id/showDetailsMainTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="EMAIL SHOWN HERE"
-        android:textSize="30sp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
-
+        <TextView
+            android:id="@+id/showDetailsMainTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Hello World!"
+            android:textSize="20sp" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
